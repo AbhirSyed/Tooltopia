@@ -1,0 +1,173 @@
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.add-to-cart {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;
+}
+.cart-logo {
+    margin-right: 2rem; /* Or adjust as needed for spacing */
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc; /* Adds a subtle line between items */
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 100px;  /* Smaller width for cart view */
+    height: auto;
+    margin-right: 20px; /* Space between image and details */
+}
+
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Align text to the left */
+
+
+}
+/* Add this to your CSS file or within a <style> tag in base.html */
+
+/* Adjust the margin and padding to position the search bar as desired */
+.navbar .form-inline {
+    margin-right: auto; /* Pushes the search bar to the left */
+    margin-left: 1rem; /* Add some space to the left of the search bar */
+}
+
+#search-results {
+    position: absolute;
+    background: white;
+    width: 100%; /* Set width to match the search input */
+    z-index: 1000;
+    top: 64px; /* Adjust this value so it matches the height of your search bar */
+    left: 0;
+    border: 1px solid #ccc; /* Optional: adds a border around the search results */
+    box-shadow: 0 2px 4px rgba(0,0,0,.2); /* Optional: adds a shadow for better visibility */
+}
+
+
+/* Style the search input field */
+#search-input {
+    width: 200px; /* Set the width of the search input */
+}
+.product-detail-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.product-image {
+    flex: 1;
+    padding-right: 20px; /* Add some spacing between the image and the details */
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 400px; /* Adjust the size as needed */
+    width: auto;
+    height: auto;
+}
+
+.product-info {
+    flex: 2; /* Gives the product info more space than the image */
+    padding-left: 20px; /* Add some spacing between the image and the details */
+}
+
+.product-price {
+    font-size: 24px;
+    color: #FF0000; /* Amazon-like price color */
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 16px;
+    line-height: 1.6;
+}
+.cart-item input[type="number"] {
+    width: 50px; /* Or any width you prefer */
+    margin-right: 10px;
+}
+
+.cart-item .btn-info {
+    /* Styles for the 'Update' button */
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.cart-item .btn-danger {
+    /* Styles for the 'Remove' button */
+    padding: 5px 10px;
+}
+.in-stock {
+    color: green;
+}
+.cart-summary {
+    position: fixed; /* or 'absolute' if you prefer it to be relative to a positioned container */
+    bottom: 20px;
+    right: 20px;
+    text-align: right;
+}
+.buy-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.total-price h3 {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.buy-btn:hover {
+    background-color: #45a049;
+}
+.admin .product {
+    /* Your styles for admin product entries */
+}
+
+.admin input[type="number"] {
+    /* Styles for the stock input field */
+}
+
+.admin button {
+    /* Styles for the update button */
+}
+
+
+
+
+
+
+
+
+
+
+
