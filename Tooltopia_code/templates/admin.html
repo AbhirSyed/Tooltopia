@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Admin Page</h1>
+<div class="product-list">
+    {% for product in products %}
+        <div class="product">
+            <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>£{{ product.price | currency }}</p>
+            <form action="{{ url_for('update_stock', product_id=product.id) }}" method="post">
+                <input type="number" name="stock" value="{{ product.stock }}">
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

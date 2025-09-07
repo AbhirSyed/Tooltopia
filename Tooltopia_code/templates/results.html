@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<h1>Your Cart</h1>
+{% for item in cart_items %}
+<div class="cart-item">
+    <img src="{{ url_for('static', filename=item.product.image) }}" alt="Product">
+    <div class="cart-item-details">
+        <h3>{{ item.product.name }}</h3>
+        <p>£{{ item.product.price }}</p>
+        <form action="{{ url_for('update_quantity', item_id=item.id) }}" method="post">
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+            <input type="submit" value="Update" class="btn btn-info">
+        </form>
+        <form action="{{ url_for('remove_from_cart', item_id=item.id) }}" method="post">
+            <input type="submit" value="Remove" class="btn btn-danger">
+        </form>
+       
+    </div>
+    
+</div>
+{% endfor %}
+<div class="cart-summary">
+    <div class="total-price">
+        <h3>Total Price: {{ total_price | currency }}</h3>
+
+    </div>
+    <form action="{{ url_for('checkout') }}" method="post">
+        <button type="submit" class="buy-btn">Buy</button>
+    </form>
+
+{% endblock %}
+
+
+

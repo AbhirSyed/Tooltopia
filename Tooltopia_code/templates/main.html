@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Homepage{% endblock %}
+{% block content %}
+<h1>Products</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product">
+        <a href="{{ url_for('product_detail', product_id=product.id) }}">
+            <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+        </a>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price | currency }}</p>
+        <button class="add-to-cart" data-product-id="{{ product.id }}">Add to Cart</button>
+    </div>
+    {% endfor %}
+</div>
+<div id="cart-notification" style="
+  display:none; position:fixed; top:16px; right:16px; 
+  padding:10px 14px; background:#28a745; color:#fff; 
+  border-radius:6px; z-index:9999; box-shadow:0 2px 8px rgba(0,0,0,.2);
+">Added to cart</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var addToCartButtons = document.querySelectorAll('.add-to-cart');
+    
+      function showToast(msg, ok) {
+        var toast = document.getElementById('cart-notification');
+        toast.textContent = msg || (ok ? 'Added to cart' : 'Something went wrong');
+        toast.style.background = ok ? '#28a745' : '#dc3545';
+        toast.style.display = 'block';
+        setTimeout(function(){ toast.style.display = 'none'; }, 2500);
+      }
+    
+      addToCartButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var productId = button.dataset.productId;
+    
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', '/add_to_cart');
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+          xhr.onload = function () {
+          
+            if (xhr.responseURL && xhr.responseURL.indexOf('/login') !== -1) {
+              window.location = '/login?next=' + encodeURIComponent(window.location.pathname);
+              return;
+            }
+    
+            var resp = {};
+            try { resp = JSON.parse(xhr.responseText); } catch (e) {}
+    
+            if (xhr.status === 200 && resp.ok) {
+              showToast(resp.message, true);
+            } else {
+              showToast(resp.message || 'Unable to add to cart', false);
+            }
+          };
+    
+          xhr.onerror = function () {
+            showToast('Network error', false);
+          };
+    
+          xhr.send('product_id=' + encodeURIComponent(productId));
+        });
+      });
+    });
+    </script>
+    
+    
+{% endblock %}
