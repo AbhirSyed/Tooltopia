@@ -31,9 +31,14 @@ def currency(value):
 
 
 # Configure the App
-app.config['SECRET_KEY'] = 'your-secret-key-here'  # Necessary for session management and form protection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
+db_uri = os.getenv("DATABASE_URL", "sqlite:///products.db")
+if db_uri.startswith("postgres://"):
+    db_uri = db_uri.replace("postgres://", "postgresql://", 1)
+
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-not-secret')  # set a real one on hosting
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 # Initialize the Database
 db = SQLAlchemy(app)
@@ -361,3 +366,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # This will create all tables initially if they don't exist.
     app.run(debug=True)
+
