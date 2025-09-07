@@ -14,7 +14,7 @@ class AdminLoginForm(FlaskForm):
 
 
 # Initialize the Flask App
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates', static_url_path='/static')
 def money(value) -> Decimal:
     
     d = Decimal(str(value))
@@ -366,4 +366,5 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # This will create all tables initially if they don't exist.
     app.run(debug=True)
+
 
