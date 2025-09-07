@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>{%block title%}{%endblock%}</title><!--created a template which another html page can use and modify it as that page wishes-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css', v=1) }}">
     <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yEx1q6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -29,8 +29,8 @@
     <ul class="navbar-nav ml-3"> <!-- ml-3 will give some margin to the left of the cart -->
         <li class="nav-item cart-logo">
             <a class="nav-link" href="/cart">
-                <img src="{{ url_for('static', filename='cart.jpg') }}" alt="Cart" width="30" height="30">
-            </a>
+                <img src="{{ url_for('static', filename='cart.jpg', v=1) }}" alt="Cart" width="30" height="30">
+
         </li>
     </ul>
 </nav>
@@ -83,4 +83,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+
 </html>
