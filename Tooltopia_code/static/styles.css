@@ -4,7 +4,9 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
-    align-items: stretch; 
+    align-items: stretch;
+    justify-content: start;  
+    justify-items: stretch;   
   }
   
 
@@ -13,7 +15,9 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
     padding: 20px;
     text-align: center;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    width: 100%;              
+    min-width: 0;
   }
   
 
@@ -111,3 +115,4 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
   }
 
   
+
