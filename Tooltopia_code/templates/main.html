@@ -12,7 +12,7 @@
   {% endif %}
 {% endwith %}
 <div class="product-grid">
-    {% for product in products %}
+    {%- for product in products %}
     <div class="product">
         <a href="{{ url_for('product_detail', product_id=product.id) }}">
             <img src="{{ url_for('static', filename=product.image, v=1) }}" alt="{{ product.name }}">
@@ -22,7 +22,7 @@
         <p>{{ product.price | currency }}</p>
         <button class="add-to-cart" data-product-id="{{ product.id }}">Add to Cart</button>
     </div>
-    {% endfor %}
+     {%- endfor %}
 </div>
 <div id="cart-notification" style="
   display:none; position:fixed; top:16px; right:16px; 
@@ -79,4 +79,5 @@
     
     
 {% endblock %}
+
 
