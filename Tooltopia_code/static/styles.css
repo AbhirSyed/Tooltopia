@@ -1,4 +1,5 @@
-
+body { color: #212529; }
+h1, h2, h3, h4, h5, h6 { color: #212529; }
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -108,4 +109,5 @@
   @media (max-width: 600px) {
     .product-grid { grid-template-columns: 1fr; }
   }
+
   
