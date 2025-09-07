@@ -6,7 +6,8 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
     gap: 20px;
     align-items: stretch;
     justify-content: start;  
-    justify-items: stretch;   
+    justify-items: stretch;
+    grid-auto-flow: row dense;
   }
   
 
@@ -115,4 +116,5 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
   }
 
   
+
 
