@@ -5,7 +5,7 @@
 <h1>Your Cart</h1>
 {% for item in cart_items %}
 <div class="cart-item">
-    <img src="{{ url_for('static', filename=item.product.image) }}" alt="Product">
+    <img src="{{ url_for('static', filename=product.image, v=1) }}" alt="{{ product.name }}">
     <div class="cart-item-details">
         <h3>{{ item.product.name }}</h3>
         <p>£{{ item.product.price }}</p>
@@ -31,6 +31,7 @@
     </form>
 
 {% endblock %}
+
 
 
 
