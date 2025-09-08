@@ -7,7 +7,7 @@ An E-commerce Web app where various different tools are sold.
 
 **Report (PDF):** docs/Tooltopia-Report.pdf
 
-Small e-commerce Web app built with **Flask + SQLAlchemy + Flask-Login**: browse products, view details, register/login, add to cart (AJAX), update quantities, and checkout with stock checks.
+Small e-commerce Web app built with **Flask + SQLAlchemy + Flask-Login**: browse products, view details, register/login, add to cart (AJAX), and checkout with stock checks.
 
 ## Features
 - Product catalogue with live search suggestions
@@ -15,8 +15,7 @@ Small e-commerce Web app built with **Flask + SQLAlchemy + Flask-Login**: browse
 - AJAX “Add to cart” with toast
 - Cart: update/remove items; totals with `Decimal` (no float tails)
 - Checkout: validates stock, decrements stock, clears cart
-- Simple admin page to update stock
-- 
+
 ## Tech
 **Backend**:**Python, Flask, SQLAlchemy, Flask-Login, Flask-WTF/WTForms  
 **Frontend:** Jinja, HTML/CSS/JS, Bootstrap 4  
