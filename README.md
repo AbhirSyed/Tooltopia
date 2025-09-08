@@ -34,12 +34,3 @@ pip install -r requirements.txt
 # macOS/Linux: export SECRET_KEY=dev-not-secret
 python app.py
 Visit http://127.0.0.1:5000
-
-TOOLTOPIA_code/
-app.py
-templates/ (base.html, main.html, product_detail.html, results.html)
-static/ (styles.css, product images, cart.jpg)
-requirements.txt
-Procfile
-docs/
-Tooltopia-Report.pdf
