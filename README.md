@@ -1,7 +1,7 @@
 # Tooltopia
 An E-commerce Web app where various different tools are sold.
 
-**Live Demo Working web app link:**https://tooltopia.onrender.com  
+**Live Demo Working web app link:**https://tooltopia.onrender.com (the Website may take about 30 seconds to initialize which is normal) 
 **Report (PDF):** docs/Tooltopia-Report.pdf
 
 Small e-commerce Web app built with **Flask + SQLAlchemy + Flask-Login**: browse products, view details, register/login, add to cart (AJAX), update quantities, and checkout with stock checks.
