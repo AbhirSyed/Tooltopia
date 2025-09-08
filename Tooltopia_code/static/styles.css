@@ -9,6 +9,8 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
     justify-items: stretch;
     grid-auto-flow: row dense;
   }
+
+
   
 
   .product {
@@ -76,6 +78,8 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
 
   .navbar .form-inline { margin-right: auto; margin-left: 1rem; }
   #search-results {
+    display: none;
+    pointer-events: none;  
     position: absolute;
     background: #fff;
     width: 100%;
@@ -86,7 +90,10 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
     box-shadow: 0 2px 4px rgba(0,0,0,.2);
   }
   #search-input { width: 200px; }
-  
+   #search-results.open {
+   display: block;
+   pointer-events: auto;
+  }
 
   .product-detail-container { display: flex; margin-top: 20px; }
   .product-image { flex: 1; padding-right: 20px; }
@@ -116,5 +123,6 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
   }
 
   
+
 
 
