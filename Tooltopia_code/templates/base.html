@@ -37,29 +37,63 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-      const searchInput = document.getElementById('search-input');
-      const resultsDiv = document.getElementById('search-results');
-  
-      searchInput.addEventListener('input', function() {
-          const query = searchInput.value;
-          if (query.length > 2) {  // Only searches if there are more than 2 characters
-              fetch(`/search?q=${encodeURIComponent(query)}`)
-                  .then(response => response.json())
-                  .then(data => {
-                      resultsDiv.innerHTML = '';  // Clears previous results
-                      data.forEach(item => {
-                          const div = document.createElement('div');
-                          div.innerHTML = `<a href="/product/${item.id}">${item.name}</a>`;
-                          resultsDiv.appendChild(div);
-                      });
-                  });
-          } else {
-              resultsDiv.innerHTML = '';
-          }
-      });
+    const form        = document.querySelector('.navbar .form-inline');
+    const searchInput = document.getElementById('search-input');
+    const resultsDiv  = document.getElementById('search-results');
+
+    const MIN_CHARS   = 1;      // show from first character
+    let abortCtrl     = null;
+    let debounceTimer = null;
+
+    function closeResults() {
+      resultsDiv.classList.remove('open');
+      resultsDiv.innerHTML = '';
+    }
+
+    async function doSearch(q) {
+      if (abortCtrl) abortCtrl.abort();
+      abortCtrl = new AbortController();
+
+      try {
+        const res  = await fetch('/search?q=' + encodeURIComponent(q), { signal: abortCtrl.signal });
+        const data = await res.json();
+
+        if (!Array.isArray(data) || data.length === 0) { closeResults(); return; }
+
+        resultsDiv.innerHTML = data.map(item =>
+          `<a href="/product/${item.id}">${item.name}</a>`
+        ).join('');
+
+        resultsDiv.classList.add('open');
+      } catch (e) {
+        // ignore aborts; close on errors
+        closeResults();
+      }
+    }
+
+    // prevent the form from navigating away on Enter/Submit
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+    // live search on input
+    searchInput.addEventListener('input', function () {
+      const q = searchInput.value.trim();
+      if (q.length < MIN_CHARS) { closeResults(); return; }
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => doSearch(q), 120); // small debounce
+    });
+
+    // close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!resultsDiv.contains(e.target) && e.target !== searchInput) closeResults();
+    });
+
+    // close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeResults();
+    });
   });
-  </script>
-  
+</script>
+
 
     <main class="container py-3">
     {%block content%}
@@ -85,5 +119,6 @@
 </body>
 
 </html>
+
 
 
