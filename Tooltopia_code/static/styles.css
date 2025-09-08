@@ -76,26 +76,39 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
   .in-stock { color: green; }
   
 
-  .navbar .form-inline { position: relative; }
-  #search-results {
-  display: none;           
-  pointer-events: none;     
+.navbar .form-inline {
+  position: relative;        /* <-- important */
+  margin-right: auto;
+  margin-left: 1rem;
+}
+#search-results {
+  display: none;
+  pointer-events: none;
   position: absolute;
-  top: 100%;              
+  top: calc(100% + 4px);     /* sits just under the form */
   left: 0;
-  width: 280px;             
+  width: 320px;              /* or 100% if you prefer full width */
+  max-height: 300px;
+  overflow-y: auto;
   background: #fff;
   border: 1px solid #ccc;
-  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  box-shadow: 0 2px 4px rgba(0,0,0,.2);
   z-index: 1000;
-  max-height: 320px;
-  overflow-y: auto;
-  }
+}
   #search-input { width: 200px; }
    #search-results.open {
    display: block;
    pointer-events: auto;
   }
+#search-results a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #212529;
+}
+#search-results a:hover {
+  background: #f8f9fa;
+}
 
   .product-detail-container { display: flex; margin-top: 20px; }
   .product-image { flex: 1; padding-right: 20px; }
@@ -125,6 +138,7 @@ h1, h2, h3, h4, h5, h6 { color: #212529; }
   }
 
   
+
 
 
 
