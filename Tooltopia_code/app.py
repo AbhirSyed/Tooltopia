@@ -62,6 +62,9 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f'<Product {self.name}>'
 
+
+    
+    
 # Initialize Flask-Login
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -82,6 +85,8 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Register')
 class Product(db.Model):
+    def __repr__(self):
+        return f'<Product {self.name}>'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150), nullable=False)
     price = db.Column(db.Float, nullable=False)
@@ -102,6 +107,9 @@ class CartItem(db.Model):
 
     def __repr__(self):
         return f'<Product {self.name}>'
+    def __repr__(self):
+       return f'<CartItem user={self.user_id} product={self.product_id} qty={self.quantity}>'
+
 
 cart_items = []  
 
@@ -366,5 +374,6 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # This will create all tables initially if they don't exist.
     app.run(debug=True)
+
 
 
